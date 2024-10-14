@@ -1,1 +1,1 @@
-Balıkesir University Computer Engineering Graduation Project
+Balıkesir University, Computer Engineering, Graduation Project, Backend Project
