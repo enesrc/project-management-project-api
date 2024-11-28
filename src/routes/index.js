@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const userRoutes = require('./userRoutes');
+const authRoutes = require('./authRoutes');
+const userProfileRoutes = require('./userProfileRoutes');
 
-router.use('/user', userRoutes);
+router.use(authRoutes);
+router.use(userProfileRoutes);
 
 router.get("/", (req, res) => {
-    res.send("Main Page Test")
+    return res.send("Main Page Test")
 })
 
 module.exports = router;
