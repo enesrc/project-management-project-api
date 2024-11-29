@@ -13,9 +13,13 @@ const createToken = async (user, res) => {
         expiresIn: process.env.JWT_EXPIRES_IN
     })
 
+    const _user = await User.findByPk(user.id, { attributes: ['nickname'] })
+    const nickname = _user.nickname
+
     return res.status(201).json({
         success: true,
         token,
+        nickname: nickname,
         message: "Token Başarıyla Oluşturuldu."
     })
 }
@@ -33,7 +37,7 @@ const tokenCheck = async (req, res, next) => {
             throw new APIError("Geçersiz Token!", 401)
 
         const user = await User.findByPk(decoded.sub, {
-            attributes: ['id', 'first_name', 'last_name', 'email']
+            attributes: ['id', 'nickname' ]
         });
         
         if(!user)

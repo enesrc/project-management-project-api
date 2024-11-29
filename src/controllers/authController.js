@@ -12,28 +12,23 @@ const login = async (req, res) => {
 
     const user = await User.findOne({ where: { email: email } });
 
-    if(!user)
+    if (!user)
         throw new APIError("Email yok.")
 
     const resultOfComparing = await bcrypt.compare(password, user.password)
 
-    if(!resultOfComparing)
+    if (!resultOfComparing)
         throw new APIError("Şifre hatalı.")
 
-    try{
-        createToken(user, res)
-    }
-    catch(err){
-        return new Response(null ,"CreateTokene ulasilaamiyor", "asdas").error500(res)
-    }
+    createToken(user, res)
 }
 
 const register = async (req, res) => {
     const { email } = req.body
 
-    const user = await User.findOne({ where: {email: email}});
-    
-    if(user)
+    const user = await User.findOne({ where: { email: email } });
+
+    if (user)
         throw new APIError("Girmiş Olduğunuz Email Kullanımda!", 401)
 
     req.body.password = await bcrypt.hash(req.body.password, 10)
@@ -41,10 +36,10 @@ const register = async (req, res) => {
     const userSave = new User(req.body)
 
     await userSave.save()
-        .then((data)=>{
+        .then((data) => {
             return new Response(data, "Kayıt Başarıyla Eklendi").created(res)
         })
-        .catch((err)=>{
+        .catch((err) => {
             console.error("Kayıt Eklenemedi Hatası:", err);
             throw new APIError("Kayıt Eklenemedi!", 400)
         })
