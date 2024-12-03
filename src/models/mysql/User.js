@@ -44,7 +44,7 @@ const User = sequelizeConnection.define('User', {
     type: DataTypes.ENUM('e', 'k', 'd'),
     allowNull: false
   },
-  date_of_birth: {
+  birth_date: {
     type: DataTypes.DATE,
     allowNull: true
   },

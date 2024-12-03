@@ -20,9 +20,8 @@ app.use(cors(corsOptions))
 
 app.use('/', routes);
 
-models.syncDatabase();
+models.sync();
 
-//Hata yakalama
 app.use(errorHandlerMiddleware);
 
 app.listen(port, () => {

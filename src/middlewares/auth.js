@@ -31,7 +31,7 @@ const tokenCheck = async (req, res, next) => {
         throw new APIError("Geçersiz Oturum, Lütfen Oturum Açın..", 401)
 
     const token = req.headers.authorization.split(" ")[1]
-    
+        
     await jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, decoded) => {
         if(err)
             throw new APIError("Geçersiz Token!", 401)

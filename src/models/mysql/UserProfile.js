@@ -19,21 +19,25 @@ const UserProfile = sequelizeConnection.define('UserProfile', {
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE'
   },
+  title: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
   profile_image: {
     type: DataTypes.STRING,
-    allowNull: true // Profil resmi isteğe bağlı
+    allowNull: true
   },
   wallpaper: {
     type: DataTypes.STRING,
-    allowNull: true // Duvar kağıdı isteğe bağlı
+    allowNull: true 
   },
   bio: {
     type: DataTypes.TEXT,
-    allowNull: true // Kullanıcı biyografisi isteğe bağlı
+    allowNull: true 
   },
   social_links: {
     type: DataTypes.JSON,
-    allowNull: true // Sosyal medya bağlantıları isteğe bağlı
+    allowNull: true 
   }
 }, {
   tableName: 'UserProfiles',

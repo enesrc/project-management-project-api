@@ -12,15 +12,23 @@ const ProjectAnnouncement = sequelizeConnection.define('ProjectAnnouncement', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    description: {
+    shortDescription: {
         type: DataTypes.TEXT,
         allowNull: false
+    },
+    longDescription: {
+        type: DataTypes.TEXT,
+        allowNull: false
+    },
+    technologies: {
+        type: DataTypes.TEXT,
+        allowNull: true
     },
     startDate: {
         type: DataTypes.DATE,
         allowNull: false
     },
-    createdBy: {
+    userId: {
         type: DataTypes.INTEGER,
         references: {
             model: User,
@@ -29,7 +37,7 @@ const ProjectAnnouncement = sequelizeConnection.define('ProjectAnnouncement', {
         allowNull: false
     },
 }, {
-    tableName: 'ProjectAnnouncements',
+    tableName: 'projectannouncements',
     timestamps: true
 });
 

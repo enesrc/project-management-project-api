@@ -49,72 +49,13 @@ const me = async (req, res) => {
     return new Response("200", req.user).success(res)
 }
 
-/*const register = async (req, res) => {
-    const { name, surname, email, phone, gender, birthdate, profileImageUrl, country, city, password } = req.body;
-
-    await User.create({
-        name,
-        surname,
-        email,
-        phone,
-        password,
-        gender,
-        birthdate,
-        profileImageUrl,
-        country,
-        city
-    }).then(newUser => {
-        new Response(201, "Account was created successfully.", newUser).success(res)
-        console.log("Account was created successfully.");
-    }).catch(error => {
-        console.error('Error creating user:', error);
-        res.status(500).json({ error: 'An error occurred while creating the user' });
-    })
-};
-
-const login = async (req, res) => {
-    const { email, password } = req.body;
-
-    try {
-        const user = await User.findOne({ where: { email } });
-
-        if (!user) {
-            return res.status(404).json({ error: 'User not found!' });
-        }
-
-        if (password !== user.password) {
-            return res.status(401).json({ error: 'Invalid credentials!' });
-        }
-
-        res.status(200).json({ message: 'Login successful', user });
-    } catch (error) {
-        console.error('Error during login:', error);
-        res.status(500).json({ error: 'An error occurred during login' });
-    }
-};
-
-const getUsers = async (req, res) => {
-    await User.findAll()
-        .then(users => {
-            new Response(200, "All user information was successfully pulled.", users).success(res);
-        })
-        .catch(error => {
-            res.status(531).json(error);
-        });
+const logout = async (req, res) => {
+    
 }
-
-const deleteUsers = async (req, res) => {
-    await User.destroy({
-        truncate: true
-    }).then(users => {
-        new Response(200, 'Records deleted', users).success(res);
-    }).catch(error => {
-        res.status(531).json(error);
-    });
-}*/
 
 module.exports = {
     register,
     login,
-    me
+    me,
+    logout
 };

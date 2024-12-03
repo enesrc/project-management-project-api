@@ -3,7 +3,9 @@ const router = express.Router();
 
 const authRoutes = require('./authRoutes');
 const userProfileRoutes = require('./userProfileRoutes');
+const projectAnnouncementRoutes = require('./projectAnnouncementRoutes.js');
 
+router.use(projectAnnouncementRoutes);
 router.use(authRoutes);
 router.use(userProfileRoutes);
 

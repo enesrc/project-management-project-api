@@ -8,10 +8,10 @@ const getProfileData = async (req, res, next) => {
 
     const user = await User.findOne({
         where: { nickname: nickname },
-        attributes: ['nickname', 'first_name', 'last_name', 'email','gender','date_of_birth', 'country'],
+        attributes: ['nickname', 'first_name', 'last_name', 'email','gender','birth_date', 'country'],
         include: [{
             model: UserProfile,
-            attributes: ['profile_image', 'wallpaper', 'bio', 'social_links'] // İstediğiniz alanları buraya ekleyin
+            attributes: ['profile_image', 'wallpaper', 'bio', 'social_links', 'title'] // İstediğiniz alanları buraya ekleyin
         }]
     });
     
